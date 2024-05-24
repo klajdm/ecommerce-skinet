@@ -7,4 +7,4 @@ v17
 config
 appsettings.json
 *.db
-gitignore
+.gitignore
