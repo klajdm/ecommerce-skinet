@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from './models/product.model';
+import { IProduct } from './shared/models/product.model';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +10,11 @@ import { IProduct } from './models/product.model';
 export class AppComponent implements OnInit{
   title = 'Skinet';
 
-  products: IProduct[];
+  products: IProduct[]=[];
 
   constructor(private http: HttpClient){}
 
   ngOnInit(): void {
-    
+    this.products
   }
 }
