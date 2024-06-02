@@ -7,14 +7,22 @@ import { IProductType } from '../shared/models/product-type.model';
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss']
+  styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit {
-  products: IProduct[]=[];
-  brands: IBrand[]=[];
-  productTypes: IProductType[]=[];
+  products?: IProduct[] = [];
+  brands: IBrand[] = [];
+  productTypes: IProductType[] = [];
+  brandIdSelected = 0;
+  typeIdSelected = 0;
+  sortSelected = 'name';
+  sortOptions = [
+    { name: 'Alphabetical', value: 'name' },
+    { name: 'Price: Low to High', value: 'priceAsc' },
+    { name: 'Price: High to Low', value: 'priceDesc' },
+  ];
 
-  constructor(private _shopService: ShopService){}
+  constructor(private _shopService: ShopService) {}
 
   ngOnInit(): void {
     this.getBrands();
@@ -22,27 +30,53 @@ export class ShopComponent implements OnInit {
     this.getProducts();
   }
 
-  getProducts(){
-    this._shopService.getProducts().subscribe(response => {
-      this.products = response.data;
-    }, error => {
-      console.log(error);
-    });
+  getProducts() {
+    this._shopService
+      .getProducts(this.brandIdSelected, this.typeIdSelected, this.sortSelected)
+      .subscribe(
+        (response) => {
+          this.products = response?.data;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
-  getBrands(){
-    this._shopService.getBrands().subscribe(response => {
-      this.brands = response;
-    }, error => {
-      console.log(error);
-    });
+  getBrands() {
+    this._shopService.getBrands().subscribe(
+      (response) => {
+        this.brands = [{ id: 0, name: 'All' }, ...response];
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
-  getProductTypes(){
-    this._shopService.getProductTypes().subscribe(response => {
-      this.productTypes = response;
-    }, error => {
-      console.log(error);
-    });
+  getProductTypes() {
+    this._shopService.getProductTypes().subscribe(
+      (response) => {
+        this.productTypes = [{ id: 0, name: 'All' }, ...response];
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  onBrandSelected(brandId: number) {
+    this.brandIdSelected = brandId;
+    this.getProducts();
+  }
+
+  onTypeSelected(typeId: number) {
+    this.typeIdSelected = typeId;
+    this.getProducts();
+  }
+
+  onSortSelected(sort: any) {
+    this.sortSelected = sort.target.value;
+    this.getProducts();
   }
 }
