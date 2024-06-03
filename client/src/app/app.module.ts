@@ -19,7 +19,7 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptors';
     HttpClientModule,
     CoreModule,
     HomeModule,
-    NgxSpinnerModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

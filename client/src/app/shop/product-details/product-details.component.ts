@@ -17,7 +17,10 @@ export class ProductDetailsComponent implements OnInit {
     private _shopService: ShopService,
     private _activateRoute: ActivatedRoute,
     private _bcService: BreadcrumbService
-  ) {}
+  ) {
+    this._bcService.set('@productDetails', ' ');
+  }
+
   ngOnInit(): void {
     this.productId = Number(this._activateRoute.snapshot.paramMap.get('id'));
     this.getProductById();

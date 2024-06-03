@@ -25,7 +25,7 @@
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "./node_modules/bootswatch/dist/theme/bootstrap.min.css",
+              "./node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "./node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
