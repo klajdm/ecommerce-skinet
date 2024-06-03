@@ -10,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class TestErrorComponent implements OnInit {
   baseUrl: string = environment.apiUrl;
 
+  validationError: any;
+
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {}
@@ -54,6 +56,7 @@ export class TestErrorComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        this.validationError = error.errors;
       }
     );
   }
