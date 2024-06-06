@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, map, of, ReplaySubject } from 'rxjs';
 import { IUser } from '../shared/models/user.mode';
 import { Router } from '@angular/router';
 
@@ -11,20 +11,21 @@ import { Router } from '@angular/router';
 export class AccountService {
   baseUrl = environment.apiUrl;
 
-  private currentUserSource = new BehaviorSubject<IUser>(null);
+  private currentUserSource = new ReplaySubject<IUser>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  getCurrentUserValue() {
-    return this.currentUserSource.value;
-  }
-
   loadCurrentUser(token: string) {
+    if (token === null) {
+      this.currentUserSource.next(null);
+      return of(null);
+    }
+
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', `Bearer ${token}`);
 
-    return this.http.get(this.baseUrl + 'account', { headers }).pipe(
+    return this.http.get<IUser>(this.baseUrl + 'account', { headers }).pipe(
       map((user: IUser) => {
         if (user) {
           localStorage.setItem('token', user.token);
