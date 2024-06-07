@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout-address',
   templateUrl: './checkout-address.component.html',
-  styleUrls: ['./checkout-address.component.scss']
+  styleUrls: ['./checkout-address.component.scss'],
 })
-export class CheckoutAddressComponent {
+export class CheckoutAddressComponent implements OnInit {
+  @Input() checkoutForm: FormGroup;
 
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 }
