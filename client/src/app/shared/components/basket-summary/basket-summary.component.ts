@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BasketService } from '../../../basket/basket.service';
 import { BasketItem, IBasket } from '../../models/basket.model';
@@ -15,6 +15,8 @@ export class BasketSummaryComponent implements OnInit {
   @Output() increment: EventEmitter<BasketItem> =
     new EventEmitter<BasketItem>();
   @Output() remove: EventEmitter<BasketItem> = new EventEmitter<BasketItem>();
+
+  @Input() isBasket = true;
 
   constructor(private basketService: BasketService) {}
 

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { AccountService } from '../../../account/account.service';
 
 @Component({
   selector: 'app-checkout-address',
@@ -9,7 +11,23 @@ import { FormGroup } from '@angular/forms';
 export class CheckoutAddressComponent implements OnInit {
   @Input() checkoutForm: FormGroup;
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  constructor(
+    private accountService: AccountService,
+    private toastr: ToastrService
+  ) {}
+
+  ngOnInit(): void {}
+
+  saveUserAddress() {
+    this.accountService
+      .updateUserAddress(this.checkoutForm.get('addressForm').value)
+      .subscribe(
+        () => {
+          this.toastr.success('Address saved', 'Success');
+        },
+        (error) => {
+          this.toastr.success(error.message, 'Success');
+        }
+      );
   }
 }
