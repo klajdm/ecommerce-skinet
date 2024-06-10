@@ -3,3 +3,23 @@
   color: white !important;
   border-color: red !important;
 }
+
+.list-group-item {
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.1em;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.active {
+    border-radius: 10px;
+  }
+
+  &:not(.active):hover {
+    color: #fff;
+    background-color: rgba(233, 32, 32, 0.733);
+  }
+}
