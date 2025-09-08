@@ -47,7 +47,7 @@ This Code of Conduct also applies to behavior outside the community spaces when 
 ## 📞 Reporting Guidelines
 
 ### How to Report
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at **[klajdi.murataj@example.com]** (replace with actual email).
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at **[klajdi.murataj@gmail.com]** (replace with actual email).
 
 ### What to Include
 When reporting, please include:
