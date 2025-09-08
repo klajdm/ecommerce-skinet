@@ -205,10 +205,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Microsoft for ASP.NET Core
 - All the open-source contributors whose packages make this project possible
 
-## 📸 Screenshots
-
-[Add screenshots of your application here]
-
 ## 🗺️ Roadmap
 
 - [ ] Mobile app development
