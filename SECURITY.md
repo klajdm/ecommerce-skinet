@@ -8,7 +8,7 @@ We take the security of Skinet E-Commerce seriously. If you discover a security 
 
 **Please do NOT report security vulnerabilities through public GitHub issues.**
 
-Instead, please send a detailed report to: **[klajdi.murataj@example.com]** (replace with actual email)
+Instead, please send a detailed report to: **[klajdimurati3@gmail.com]**
 
 Include the following information in your report:
 
@@ -196,7 +196,7 @@ We recognize and thank security researchers who help improve our security:
 ## 📞 Contact
 
 For security-related questions or concerns:
-- **Email**: [klajdi.murataj@example.com] (replace with actual email)
+- **Email**: [klajdimurati3@gmail.com]
 - **Response Time**: Within 24 hours for security issues
 
 For general questions, please use the GitHub issues section.
